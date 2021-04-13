@@ -1,0 +1,29 @@
+{
+  "name": "gql-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hakimazland07/gql-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hakimazland07/gql-server/issues"
+  },
+  "homepage": "https://github.com/Hakimazland07/gql-server#readme",
+  "dependencies": {
+    "apollo-server": "^2.22.2",
+    "apollo-server-express": "^2.22.2",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "notarealdb": "^0.2.2",
+    "uuid": "^8.3.2"
+  }
+}
