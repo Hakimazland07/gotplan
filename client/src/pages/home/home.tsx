@@ -21,10 +21,9 @@ export default function Home() {
     useEffect(() => {
         if (pages) {
             setContacts(pages.pagination);
-            setLatest(pages.pagination.users)
-            console.log(latest)
+            setLatest(pages.pagination.users);
         }
-    })
+    },[pages])
 
     function next() {
         if (page + 3 < contacts.totalUsers) {
@@ -35,15 +34,14 @@ export default function Home() {
 
 
     function prev() {
-        console.log(page)
-        if (page - 3 < 0) {
+        if (page - 3 >= 0) {
             setPage(page - 3);
         }
     }
 
     const latestlist = (
         <div>
-            <ListGroup>
+            <ListGroup style={{height: "300px"}}>
                 {latest.map((data) => {
                     return (
                         <ListGroupItem className="listgroupitem" key={data.id}>

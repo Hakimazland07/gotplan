@@ -4,6 +4,7 @@ import { ListGroup, ListGroupItem, Form, Button } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
 import { LOAD_USERS, GET_USER_BY_ID, DELETE_USER, UPDATE_USER, SEARCH_USER, GET_GENDERS, FILTER_GENDER } from '../../services/gql-api';
 import { IoFilter } from "react-icons/io5"
+import { AiOutlineEdit, AiFillDelete } from "react-icons/ai"
 import Drawer from 'react-drag-drawer';
 import SearchBar from "material-ui-search-bar";
 
@@ -134,8 +135,9 @@ export default function List() {
             }
         }).then(response => {
             openDetailContact();
-            window.location.reload(false);
+            setContacts(getUsers.getAllUser)
         })
+        window.location.reload(false);
     }
 
     function deleteContact(id: any) {
@@ -146,12 +148,12 @@ export default function List() {
         }).then(response => {
             openDetailContact();
             setContacts(getUsers.getAllUser);
-            window.location.reload(false);
         })
+        window.location.reload(false);
     }
 
     function apply() {
-        if(applyFilter != "All"){
+        if (applyFilter != "All") {
             filterGender({
                 variables: {
                     gender: applyFilter
@@ -159,7 +161,7 @@ export default function List() {
             }).then(response => {
                 setContacts(response.data.filterGender);
             })
-        }else{
+        } else {
             setContacts(getUsers.getAllUser)
         }
         setFilter(false)
@@ -197,8 +199,12 @@ export default function List() {
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control type="text" placeholder="Phone Number" onChange={(e) => { updatePhoneNumber(e) }} defaultValue={phoneNumber} />
             </Form.Group>
-            <Button onClick={() => deleteContact(id)}> Delete</Button>
-            <Button onClick={() => updateContact(id)}> Update</Button>
+            <Button className="updateBtn" onClick={() => updateContact(id)}>
+                <AiOutlineEdit style={{ marginBottom: "4px" }} />
+            </Button>
+            <Button className="deleteBtn" onClick={() => deleteContact(id)}>
+                <AiFillDelete style={{ marginBottom: "4px" }}/>
+            </Button>
         </div>
     )
 
@@ -240,6 +246,7 @@ export default function List() {
                     className='searchbarCustom'
                     value={search}
                     onChange={(newValue) => searching(newValue)}
+                    onCancelSearch={() => searching("")}
                 />
                 <div className="filter">
                     <p onClick={openFilter} className="filtertext">Filter</p>

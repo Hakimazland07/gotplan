@@ -8,7 +8,7 @@
       position: fixed;
       top: 30px;
       z-index: 99;
-      width: 370px;
+      width: 90%;
     }
     .list-group {
       .list-group-item {
@@ -36,7 +36,24 @@
   }
 }
 
+.updateBtn{
+  float: right;
+  height: 40px;
+  width: 42px;
+  border-radius: 100% !important;
+  background-color: #3f51b5 !important;
+  border: none !important;
+}
 
+.deleteBtn{
+  float: right;
+  height: 40px;
+  width: 42px;
+  border-radius: 100% !important;
+  background-color: #df4b4b !important;
+  border: none !important;
+  margin-right: 8px;
+}
 
 .radio-btn {
   margin: 20px 0;
@@ -44,7 +61,7 @@
 
 .apply-btn {
   float: right;
-  border: none;
+  border: none !important;
   background-color: #3f51b5 !important;
 }
 

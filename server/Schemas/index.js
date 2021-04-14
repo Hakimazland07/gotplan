@@ -20,7 +20,9 @@ const RootQuery = new GraphQLObjectType({
             args: { first: { type: GraphQLInt }, offset: { type: GraphQLInt } },
             resolve(parent, args) {
                 const totalUsers = userData.length;
-                const users = args.first === undefined ? userData.slice(args.offset) : userData.slice(args.offset, args.offset + args.first);
+                const rev = [...userData].reverse();
+                console.log(rev)
+                const users = args.first === undefined ? rev.slice(args.offset) : rev.slice(args.offset, args.offset + args.first);
                 const result = {
                     users,
                     totalUsers
